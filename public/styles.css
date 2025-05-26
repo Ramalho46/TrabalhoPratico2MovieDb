@@ -1,0 +1,56 @@
+h3{
+    border-bottom: 1px solid black;
+}
+
+body{
+    padding: 1rem;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+}
+
+div > a{
+    text-decoration: none;
+    color: black;
+}
+
+header > a{
+    text-decoration: none;
+    color: black;
+}
+
+.card a {
+  display: block;
+}
+
+.card a img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+#carrossel{
+    padding: 1rem 10rem;
+}
+
+div > h5{
+    text-decoration: none;
+    color: rgb(8, 156, 205);
+}
+
+#alunoAutor{
+    display: flex;
+}
+
+#miniBiografia{
+    max-width: 60%;
+}
+
+#infoAluno{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
