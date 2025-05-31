@@ -36,13 +36,16 @@ header > a{
     padding: 1rem 10rem;
 }
 
-div > h5{
+#alunoAutor > div > h5{
     text-decoration: none;
     color: rgb(8, 156, 205);
 }
 
 #alunoAutor{
     display: flex;
+    justify-content: space-around;
+    font-size: larger;
+    margin-top: 1rem;
 }
 
 #miniBiografia{
@@ -53,4 +56,9 @@ div > h5{
     display: flex;
     align-items: center;
     gap: 16px;
+}
+
+p > a{
+    text-decoration: none;
+    color: black;
 }

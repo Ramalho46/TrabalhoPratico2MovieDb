@@ -1,23 +1,29 @@
 {
-    "aluno": [
-        {
-            "idPerfil": 1,
-            "nome": "Luís Felipe Ramalho Las Casas",
-            "curso": "Sistemas de Informação",
-            "e-mail": "lcasas@sga.pucminas.br",
-            "facebook": "facebook.com",
-            "twitter": "x.com",
-            "instagram": "instagram.com",
-            "biografia": "Sou estudante de Sistemas de Informação, apaixonado por tecnologia, inovação e soluções digitais. Tenho interesse em desenvolvimento web, análise de dados e segurança da informação. Estou sempre em busca de novos conhecimentos e experiências que contribuam para minha formação profissional e pessoal. Busco aplicar na prática o que aprendo na teoria, desenvolvendo projetos que unam criatividade e eficiência.",
-            "turma": "Noite",
-            "avatar": "img/avatar.png"
-        }
-    ],
-    "preferidas": [
-        {
-            "idConteudo": 1,
-            "idSeriePreferida": "APIMovieDb",
-            "idUsuarioItemPreferido": ""
-        }
-    ]
+  "aluno": [
+    {
+      "idPerfil": 1,
+      "nome": "Luís Felipe Ramalho Las Casas",
+      "curso": "Sistemas de Informação",
+      "e-mail": "lcasas@sga.pucminas.br",
+      "facebook": "facebook.com",
+      "twitter": "x.com",
+      "instagram": "instagram.com",
+      "biografia": "Sou estudante de Sistemas de Informação, apaixonado por tecnologia, inovação e soluções digitais. Tenho interesse em desenvolvimento web, análise de dados e segurança da informação. Estou sempre em busca de novos conhecimentos e experiências que contribuam para minha formação profissional e pessoal. Busco aplicar na prática o que aprendo na teoria, desenvolvendo projetos que unam criatividade e eficiência.",
+      "turma": "Noite",
+      "avatar": "img/avatar.png",
+      "id": "6507"
+    }
+  ],
+  "preferidas": [
+    {
+      "idConteudo": 1,
+      "idSeriePreferida": "APIMovieDb",
+      "idUsuarioItemPreferido": "",
+      "id": "fff5"
+    },
+    {
+      "id": "1c74",
+      "tmdbId": 22980
+    }
+  ]
 }
