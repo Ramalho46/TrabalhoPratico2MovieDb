@@ -16,14 +16,20 @@
   ],
   "preferidas": [
     {
-      "idConteudo": 1,
-      "idSeriePreferida": "APIMovieDb",
-      "idUsuarioItemPreferido": "",
-      "id": "fff5"
-    },
-    {
       "id": "1c74",
       "tmdbId": 22980
+    },
+    {
+      "id": "e193",
+      "tmdbId": 61818
+    },
+    {
+      "id": "0eb2",
+      "tmdbId": 4057
+    },
+    {
+      "id": "cd7a",
+      "tmdbId": 1434
     }
   ]
 }

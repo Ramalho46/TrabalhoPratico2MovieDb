@@ -16,7 +16,7 @@ function imprimeCarrossel(filmes){
         <a href="detalhes.html?id=${filme.id}"><img src="https://image.tmdb.org/t/p/w1280${filme.backdrop_path}" class="d-block w-100" alt="${filme.title}"></a>
         <div class="carousel-caption d-none d-md-block">
         <h5>${filme.name}</h5>
-        <p>${limitarTexto(filme.overview, 150)}</p>
+        <p>${limitarTexto(filme.overview, 150) || 'Sem descrição disponível.'}</p>
         </div>
         </div>
         `;
@@ -107,11 +107,9 @@ const inputPesquisa = document.getElementById('barraPesquisa');
 const botaoPesquisar = document.getElementById('btnPesquisa'); 
 
 if(inputPesquisa && botaoPesquisar){
-    botaoPesquisar.addEventListener('click', () => {
+    botaoPesquisar.addEventListener('click', async () => {
         const termo = inputPesquisa.value.trim();
-        if(termo !== '') {
-            buscarFilmesNaAPI(termo);
-        }
+        mostrarFilmes(series);
     });
 
     inputPesquisa.addEventListener('keypress', function (e) {
@@ -145,7 +143,7 @@ function mostrarFilmes(filmes) {
         const imagem = filme.backdrop_path ? `https://image.tmdb.org/t/p/w780${filme.backdrop_path}` : 'img/placeholder.jpg';
 
         cards += `
-             <div class="col-6">
+             <div class="col">
                 <div class="card">
                     <a href="detalhes.html?id=${filme.id}"><img src="${imagem}" class="card-img-top" alt="${filme.name}"></a>
                     <div class="card-body">
@@ -178,18 +176,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const dataFormatada = formatarDataBR(filme.first_air_date);
 
         document.getElementById('visaoGeral').innerHTML = `
-        <div class="col">
-            <div class="card">
-                <img src="https://image.tmdb.org/t/p/w1280${filme.backdrop_path}" alt="${filme.name}">
-                <div class="card-body">
-                    <h5 class="card-title">${filme.name}</h5>
-                    <p class="card-text">${limitarTexto(filme.overview, 150) || 'Sem descrição disponível.'}</p>
-                    <p>${dataFormatada}</p>
-                    <p>${generos}</p>
-                    <button onclick="favoritarSerie(${id})" data-id="${filme.id} type="button" class="btn btn-primary">Favoritar</button>
+            <div id="serieInfo">
+                <img id="imgPoster" src="https://image.tmdb.org/t/p/w1280${filme.poster_path}" alt="${filme.name}">
+                <div id="infoPoster">
+                    <div>    
+                        <h2 class="card-title">${filme.name}</h2>
+                        <p>${generos}</p>
+                        <p class="card-text">${(filme.overview) || 'Sem descrição disponível.'}</p>
+                    </div>
+                    <div>    
+                        <p><strong>Data de Lançamento:</strong> ${dataFormatada}</p>
+                        <button onclick="favoritarSerie(${id})" data-id="${filme.id}" type="button" class="btn btn-primary">Favoritar</button>
+                    </div>
                 </div>
             </div>
-        </div>
         `;
     })
     .catch(error => {
@@ -264,10 +264,41 @@ fetch(`https://api.themoviedb.org/3/tv/${id}/credits?api_key=82e3160b362bd6e6958
     })
     .catch(error => console.error('Erro ao carregar elenco:', error));
 
-    botaoPesquisar.addEventListener('click', (e) => {
-    e.preventDefault();
-    const termo = inputPesquisa.value.trim();
-    if (termo !== '') {
-        buscarFilmesNaAPI(termo);
-    }
+
+window.onload = function imprimeFavoritas(filmes){
+    var card = '';
+
+    fetch(`http://localhost:3000/preferidas`)
+    .then(response => response.json())
+    .then(filme => {
+        filme.forEach((filme) => {
+            const serieId = filme.tmdbId;
+
+            fetch(`https://api.themoviedb.org/3/tv/${serieId}?api_key=82e3160b362bd6e69585ed82fdf77260&language=pt-BR`)
+                .then(response => response.json())
+                .then(filme => {
+                    card += `
+                        <div class="col">
+                            <div class="card">
+                                <a href="detalhes.html?id=${filme.id}"><img src="https://image.tmdb.org/t/p/w1280${filme.backdrop_path}" class="card-img-top" alt="${filme.name}"></a>
+                                <div class="card-body">
+                                    <a href="detalhes.html?id=${filme.id}"><h5 class="card-title">${filme.name}</h5></a>
+                                    <p class="card-text">${limitarTexto(filme.overview, 150) || 'Sem descrição disponível.'}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    document.getElementById('favoritas').innerHTML = card;
+                })
+        })
+    })
+    .catch(error => console.log('Erro ao carregar Favoritos:', error));
+}
+
+botaoPesquisar.addEventListener('click', (e) => {
+e.preventDefault();
+const termo = inputPesquisa.value.trim();
+if (termo !== '') {
+    buscarFilmesNaAPI(termo);
+}
 });

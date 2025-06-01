@@ -32,10 +32,6 @@ header > a{
   object-fit: cover;
 }
 
-#carrossel{
-    padding: 1rem 10rem;
-}
-
 #alunoAutor > div > h5{
     text-decoration: none;
     color: rgb(8, 156, 205);
@@ -61,4 +57,98 @@ header > a{
 p > a{
     text-decoration: none;
     color: black;
+}
+
+button > h4 > a{
+    color: white;
+    text-decoration: none;
+}
+
+#logo{
+    border-radius: 1rem;
+}
+
+#containerExplorer{
+    display: flex;
+}
+
+#filtrosPesquisa{
+    width: 20%;
+    margin: 1rem;
+    border-right: 1px solid grey;
+    padding-right: 1rem;
+}
+
+#resultadoPesquisa{
+    width: 80%;
+}
+
+@media (max-width: 768px){
+    #filtrosPesquisa{
+        display: none;
+    }
+
+    #resultadoPesquisa{
+        margin: auto;
+        width: 100%;
+    }
+}
+
+#imgPoster{
+    height: 600px;
+    border-radius: 1rem;
+}
+
+#infoPoster{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: x-large;
+    margin: 1rem;
+}
+
+#serieInfo{
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    #alunoAutor {
+        flex-direction: column;
+    }
+
+    #miniBiografia{
+        max-width: 100%;
+    }
+}
+
+#carrossel, 
+#carouselExampleCaptions {
+    width: 100%;
+    max-width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .carousel-caption {
+        position: static;
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 10px;
+        text-align: center;
+    }
+
+    .carousel-caption h5,
+    .carousel-caption p {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #carrossel{
+        padding: 1rem 10rem;
+    }
 }
